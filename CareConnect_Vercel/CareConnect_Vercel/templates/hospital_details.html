@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Hospital Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <div class="card">
+
+        <h1 id="hospitalName">
+            Loading...
+        </h1>
+
+        <hr>
+
+        <p><b>📍 Address:</b></p>
+        <p id="address"></p>
+
+        <p><b>📞 Phone:</b></p>
+        <p id="phone"></p>
+
+        <p><b>🌐 Website:</b></p>
+        <p id="website"></p>
+
+        <p><b>🚑 Emergency:</b></p>
+        <p id="emergency"></p>
+
+        <br>
+
+        <button onclick="history.back()">
+
+            ⬅ Back
+
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const hospital = JSON.parse(
+    sessionStorage.getItem("selectedHospital")
+);
+
+if(hospital){
+
+    document.getElementById("hospitalName").innerText =
+        hospital.name;
+
+    document.getElementById("address").innerText =
+        hospital.address;
+
+    document.getElementById("phone").innerText =
+        hospital.phone;
+
+    document.getElementById("website").innerHTML =
+        hospital.website !== "Not Available"
+            ? `<a href="${hospital.website}" target="_blank">${hospital.website}</a>`
+            : "Not Available";
+
+    document.getElementById("emergency").innerText =
+        hospital.emergency;
+
+}
+else{
+
+    document.getElementById("hospitalName").innerText =
+        "Hospital data not found.";
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CARE CONNECT</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/6d6c2b0f16.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="main-container">
+
+<div class="header">
+
+<h1 style="color:red;font-size:50px;">
+                  CARE CONNECT
+</h1>
+<h2 style="color:lightblue;">(connecting you with correct ones)</h2>
+<p>AI Powered Healthcare Multi-Agent Assistant</p>
+
+</div>
+
+
+<div class="chat-card">
+
+<div class="input-group">
+
+<label>
+
+<i class="fa-solid fa-stethoscope"></i>
+
+Describe Your Symptoms
+
+</label>
+
+<textarea
+id="symptoms"
+placeholder="Example: I have chest pain while walking upstairs..."
+></textarea>
+
+</div>
+
+
+
+
+<button onclick="analyze()">
+
+<i class="fa-solid fa-robot"></i>
+
+Analyze with AI agents
+
+</button>
+
+</div>
+
+
+<div id="loading" class="loading">
+
+<div class="loader"></div>
+
+<p>AI Agents are working...</p>
+<p>it takes a moment...</p>
+
+</div>
+
+
+
+<div id="results" class="hidden">
+
+    <div class="card">
+
+        <h2 style="text-align:center;">
+            Choose an Option
+        </h2>
+
+        <div class="option-buttons">
+
+            <button id="doctorBtn" type="button">
+                👨‍⚕️ Recommended Doctor
+            </button>
+
+            <button id="hospitalBtn" type="button">
+                🏥 Nearby Hospitals around
+            </button>
+
+        </div>
+
+    </div>
+
+    <div id="doctorSection" class="card" style="display:none;">
+
+        <h2>🩺 Recommended Specialist</h2>
+
+        <pre id="specialist"></pre>
+
+    </div>
+
+    <div id="hospitalSection" class="card" style="display:none;">
+
+    <h2>🏥 Nearby Hospitals</h2>
+
+    <div id="hospital"></div>
+
+</div>
+
+<!-- Hospital Details Modal -->
+
+<div id="hospitalModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeHospitalModal()">&times;</span>
+
+        <h2 id="modalName"></h2>
+
+        <p><b>📍 Address:</b></p>
+        <p id="modalAddress"></p>
+
+        <p><b>📏 Distance:</b></p>
+        <p id="modalDistance"></p>
+
+        <p><b>📞 Phone:</b></p>
+        <p id="modalPhone"></p>
+
+        <p><b>🌐 Website:</b></p>
+        <p id="modalWebsite"></p>
+
+        <p><b>🚑 Emergency:</b></p>
+        <p id="modalEmergency"></p>
+
+        <br>
+
+        <a id="mapLink" target="_blank">
+            <button>🗺 Open in Google Maps</button>
+        </a>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
